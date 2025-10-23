@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Steel & Oak Barbers - Premium barbershop services since 2012.">
+    <title>Steel & Oak Barbers - Crafting Confidence Since 2012</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --matte-black: #0E0E0E; --steel-grey: #444; --warm-beige: #C6A77B; --white: #ffffff; --deep-navy: #223A5E; --gold: #D4AF37; }
+body { font-family: 'Open Sans', sans-serif; color: var(--white); background: var(--matte-black); line-height: 1.7; overflow-x: hidden; }
+body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(90deg, transparent, transparent 98px, rgba(255, 255, 255, 0.015) 98px, rgba(255, 255, 255, 0.015) 100px), radial-gradient(ellipse at top, rgba(34, 58, 94, 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(198, 167, 123, 0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+h1,h2,h3,h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 1.5px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+nav { position: fixed; top: 0; left: 0; width: 100%; background: rgba(14, 14, 14, 0.85); backdrop-filter: blur(20px); padding: 1.2rem 0; z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.4s; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); }
+nav.scrolled { padding: 0.7rem 0; background: rgba(14, 14, 14, 0.95); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(212, 175, 55, 0.1); }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--warm-beige); text-transform: uppercase; letter-spacing: 3px; transition: all 0.3s; text-shadow: 0 2px 8px rgba(198, 167, 123, 0.3); }
+.nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+.nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.2px; transition: all 0.3s; position: relative; font-weight: 500; }
+.nav-links a::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transition: width 0.4s; }
+.nav-links a:hover { color: var(--warm-beige); }
+.nav-links a:hover::after { width: 100%; }
+.lang-switcher { display: flex; gap: 0.4rem; background: rgba(68, 68, 68, 0.3); padding: 0.3rem; border-radius: 4px; }
+.lang-btn { background: transparent; border: none; color: rgba(255, 255, 255, 0.6); padding: 0.4rem 0.7rem; cursor: pointer; font-size: 0.75rem; transition: all 0.3s; text-transform: uppercase; font-weight: 600; border-radius: 2px; }
+.lang-btn:hover { color: var(--white); background: rgba(198, 167, 123, 0.2); }
+.lang-btn.active { background: var(--warm-beige); color: var(--matte-black); box-shadow: 0 2px 8px rgba(198, 167, 123, 0.3); }
+.mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.mobile-menu span { width: 28px; height: 2.5px; background: var(--warm-beige); transition: all 0.3s; border-radius: 2px; }
+.mobile-menu.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+.mobile-menu.active span:nth-child(2) { opacity: 0; }
+.mobile-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+.section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3) 20%, rgba(212, 175, 55, 0.6) 50%, rgba(212, 175, 55, 0.3) 80%, transparent); margin: 5rem 0; position: relative; }
+.section-divider::before { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 40px; height: 3px; background: var(--gold); box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; background: linear-gradient(135deg, rgba(14, 14, 14, 0.7) 0%, rgba(34, 58, 94, 0.4) 50%, rgba(14, 14, 14, 0.7) 100%), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop') center/cover; background-attachment: fixed; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, transparent 0%, rgba(14, 14, 14, 0.8) 100%); }
+.hero-content { position: relative; z-index: 2; opacity: 0; transform: translateY(40px); animation: fadeInUp 1.2s ease forwards 0.3s; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 1.5rem; color: var(--warm-beige); text-transform: uppercase; letter-spacing: 4px; line-height: 1.15; text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(198, 167, 123, 0.3); }
+.hero .subtitle { font-size: clamp(1rem, 2vw, 1.3rem); color: rgba(255, 255, 255, 0.8); margin-bottom: 2.5rem; font-weight: 300; letter-spacing: 2px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
+.cta-button { display: inline-block; background: var(--warm-beige); color: var(--matte-black); padding: 1.2rem 3.5rem; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2.5px; transition: all 0.4s; border: 2px solid var(--warm-beige); position: relative; overflow: hidden; box-shadow: 0 8px 24px rgba(198, 167, 123, 0.25), 0 4px 8px rgba(0, 0, 0, 0.3); }
+.cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, var(--deep-navy), var(--steel-grey)); transition: left 0.5s; z-index: -1; }
+.cta-button:hover { color: var(--white); border-color: var(--deep-navy); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(198, 167, 123, 0.35), 0 6px 12px rgba(0, 0, 0, 0.4); }
+.cta-button:hover::before { left: 0; }
+.scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2.5s infinite; opacity: 0.6; }
+.scroll-indicator svg { width: 32px; height: 32px; stroke: var(--warm-beige); filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)); }
+.about { padding: 8rem 0; }
+.about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-image { width: 100%; height: 550px; background: linear-gradient(135deg, rgba(34, 58, 94, 0.3), rgba(198, 167, 123, 0.2)), url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop') center/cover; border: 3px solid var(--gold); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(212, 175, 55, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1); transition: all 0.5s; }
+.about-image:hover { transform: translateY(-8px); box-shadow: 0 28px 80px rgba(0, 0, 0, 0.6), 0 12px 32px rgba(212, 175, 55, 0.3); }
+.about-content h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--warm-beige); margin-bottom: 1.5rem; text-transform: uppercase; position: relative; display: inline-block; }
+.about-content h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); }
+.about-content .tagline { font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--gold); font-style: italic; margin-bottom: 2.5rem; font-weight: 300; }
+.about-content p { color: rgba(255, 255, 255, 0.75); font-size: clamp(0.95rem, 1.5vw, 1.1rem); margin-bottom: 1.8rem; line-height: 1.9; }
+.services { padding: 8rem 0; background: linear-gradient(180deg, transparent 0%, rgba(34, 58, 94, 0.08) 50%, transparent 100%); }
+.services h2 { text-align: center; font-size: clamp(2rem, 4vw, 3rem); color: var(--warm-beige); margin-bottom: 1rem; text-transform: uppercase; }
+.services-subtitle { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-bottom: 4rem; font-style: italic; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+.service-card { background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.8) 100%); padding: 3rem 2.5rem; border: 1px solid rgba(68, 68, 68, 0.5); transition: all 0.4s; position: relative; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--gold), var(--warm-beige)); transform: scaleX(0); transition: transform 0.5s; }
+.service-card:hover { transform: translateY(-12px); border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(212, 175, 55, 0.25); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 64px; height: 64px; margin-bottom: 2rem; filter: drop-shadow(0 4px 12px rgba(198, 167, 123, 0.3)); transition: all 0.4s; }
+.service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 6px 16px rgba(212, 175, 55, 0.5)); }
+.service-card h3 { color: var(--warm-beige); font-size: 1.5rem; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1.5px; position: relative; z-index: 1; }
+.service-card p { color: rgba(255, 255, 255, 0.7); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.7; position: relative; z-index: 1; }
+.service-price { font-size: 2.5rem; color: var(--gold); font-family: 'Montserrat', sans-serif; font-weight: 700; position: relative; z-index: 1; text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3); }
+.gallery { padding: 8rem 0; }
+.gallery h2 { text-align: center; font-size: clamp(2rem, 4vw, 3rem); color: var(--warm-beige); margin-bottom: 1rem; text-transform: uppercase; }
+.gallery-subtitle { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-bottom: 4rem; font-style: italic; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.gallery-item { position: relative; height: 350px; overflow: hidden; cursor: pointer; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); transition: all 0.5s; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: all 0.6s; }
+.gallery-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, rgba(14, 14, 14, 0.8) 100%); opacity: 0.6; transition: all 0.4s; z-index: 1; }
+.gallery-item:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(212, 175, 55, 0.2), inset 0 0 0 2px rgba(212, 175, 55, 0.5); }
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item::after { content: attr(data-title); position: absolute; bottom: 25px; left: 25px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0; transform: translateY(30px); transition: all 0.4s; z-index: 2; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); }
+.gallery-item:hover::after { opacity: 1; transform: translateY(0); }
+.testimonials { padding: 8rem 0; background: linear-gradient(180deg, transparent 0%, rgba(34, 58, 94, 0.08) 50%, transparent 100%); }
+.testimonials h2 { text-align: center; font-size: clamp(2rem, 4vw, 3rem); color: var(--warm-beige); margin-bottom: 1rem; text-transform: uppercase; }
+.testimonials-subtitle { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-bottom: 4rem; font-style: italic; }
+.testimonial-slider { max-width: 900px; margin: 0 auto; position: relative; min-height: 350px; }
+.testimonial { text-align: center; padding: 3rem; opacity: 0; position: absolute; width: 100%; transition: opacity 0.6s; background: linear-gradient(135deg, rgba(26, 26, 26, 0.6) 0%, rgba(42, 42, 42, 0.4) 100%); border: 1px solid rgba(68, 68, 68, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
+.testimonial.active { opacity: 1; position: relative; }
+.quote-icon { width: 48px; height: 48px; margin: 0 auto 2rem; opacity: 0.3; }
+.testimonial-text { font-size: clamp(1.1rem, 2vw, 1.4rem); color: rgba(255, 255, 255, 0.85); font-style: italic; margin-bottom: 2.5rem; line-height: 1.9; font-weight: 300; }
+.testimonial-author { font-family: 'Montserrat', sans-serif; color: var(--warm-beige); font-weight: 600; font-size: 1.15rem; letter-spacing: 1px; }
+.testimonial-dots { display: flex; justify-content: center; gap: 1rem; margin-top: 3rem; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(68, 68, 68, 0.5); cursor: pointer; transition: all 0.4s; border: 2px solid transparent; }
+.dot:hover { background: rgba(198, 167, 123, 0.5); transform: scale(1.2); }
+.dot.active { background: var(--gold); transform: scale(1.3); box-shadow: 0 0 16px rgba(212, 175, 55, 0.5); border-color: rgba(212, 175, 55, 0.3); }
+.contact { padding: 8rem 0; }
+.contact h2 { text-align: center; font-size: clamp(2rem, 4vw, 3rem); color: var(--warm-beige); margin-bottom: 1rem; text-transform: uppercase; }
+.contact-subtitle { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-bottom: 4rem; font-style: italic; }
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.8rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.6rem; }
+.form-group label { color: var(--warm-beige); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+.form-group input, .form-group select, .form-group textarea { background: rgba(68, 68, 68, 0.3); border: 1px solid rgba(68, 68, 68, 0.5); color: var(--white); padding: 1.2rem; font-family: 'Open Sans', sans-serif; font-size: 1rem; transition: all 0.3s; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.05); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: rgba(68, 68, 68, 0.5); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(212, 175, 55, 0.1); }
+.form-group textarea { resize: vertical; min-height: 140px; }
+.submit-button { background: var(--warm-beige); color: var(--matte-black); padding: 1.2rem 2.5rem; border: 2px solid var(--warm-beige); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2.5px; cursor: pointer; transition: all 0.4s; box-shadow: 0 8px 24px rgba(198, 167, 123, 0.25), 0 4px 8px rgba(0, 0, 0, 0.3); position: relative; overflow: hidden; }
+.submit-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, var(--deep-navy), var(--steel-grey)); transition: left 0.5s; z-index: -1; }
+.submit-button:hover { background: transparent; color: var(--white); border-color: var(--deep-navy); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(198, 167, 123, 0.35), 0 6px 12px rgba(0, 0, 0, 0.4); }
+.submit-button:hover::before { left: 0; }
+.map-container { background: linear-gradient(135deg, rgba(34, 58, 94, 0.4), rgba(68, 68, 68, 0.3)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop') center/cover; height: 100%; min-height: 500px; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+.map-placeholder { text-align: center; color: var(--white); background: rgba(14, 14, 14, 0.8); padding: 3rem; backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.3); }
+.map-placeholder svg { width: 80px; height: 80px; margin-bottom: 1.5rem; stroke: var(--warm-beige); filter: drop-shadow(0 4px 12px rgba(198, 167, 123, 0.3)); }
+.map-placeholder p { font-size: 1.1rem; line-height: 1.8; }
+footer { background: linear-gradient(180deg, rgba(14, 14, 14, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%); padding: 4rem 0 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3); }
+.footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; margin-bottom: 3rem; }
+.footer-section h3 { color: var(--warm-beige); margin-bottom: 1.8rem; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; position: relative; padding-bottom: 1rem; }
+.footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.footer-logo { font-size: 2rem; font-weight: 800; color: var(--warm-beige); letter-spacing: 3px; margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(198, 167, 123, 0.3); }
+.hours-list, .social-links { list-style: none; }
+.hours-list li { color: rgba(255, 255, 255, 0.7); margin-bottom: 0.8rem; display: flex; justify-content: space-between; font-size: 0.95rem; padding: 0.4rem 0; border-bottom: 1px solid rgba(68, 68, 68, 0.3); transition: color 0.3s; }
+.hours-list li:hover { color: var(--warm-beige); }
+.social-links { display: flex; gap: 1rem; }
+.social-links a { width: 48px; height: 48px; border: 1px solid rgba(68, 68, 68, 0.5); display: flex; align-items: center; justify-content: center; transition: all 0.4s; background: rgba(68, 68, 68, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+.social-links a:hover { border-color: var(--gold); background: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); }
+.social-links svg { width: 22px; height: 22px; fill: var(--white); transition: fill 0.3s; }
+.social-links a:hover svg { fill: var(--matte-black); }
+.footer-bottom { text-align: center; padding-top: 2.5rem; border-top: 1px solid rgba(68, 68, 68, 0.3); color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+.fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 968px) {
+    .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background: rgba(14, 14, 14, 0.98); flex-direction: column; justify-content: center; transition: left 0.4s; }
+    .nav-links.active { left: 0; }
+    .nav-links a { font-size: 1.5rem; }
+    .mobile-menu { display: flex; }
+    .about .container, .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image { height: 400px; }
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+    .hours-list li { justify-content: center; gap: 2rem; }
+    .social-links { justify-content: center; }
+    .footer-section h3::after { left: 50%; transform: translateX(-50%); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .gallery-item { height: 280px; }
+}
+@media (max-width: 600px) {
+    .hero { background-attachment: scroll; }
+    .hero h1 { font-size: 2rem; }
+    .cta-button { padding: 1rem 2.5rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item { height: 320px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 2.5rem 2rem; }
+    .section-divider { margin: 3rem 0; }
+    .about, .services, .gallery, .testimonials, .contact { padding: 5rem 0; }
+    .testimonial { padding: 2rem 1.5rem; }
+    .map-container { min-height: 350px; }
+}
+    </style>
+</head>
+<body>
+<nav id="navbar">
+    <div class="container">
+        <div class="logo">STEEL & OAK</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" data-t="nav_home">Home</a></li>
+            <li><a href="#about" data-t="nav_about">About</a></li>
+            <li><a href="#services" data-t="nav_services">Services</a></li>
+            <li><a href="#gallery" data-t="nav_gallery">Gallery</a></li>
+            <li><a href="#testimonials" data-t="nav_testimonials">Testimonials</a></li>
+            <li><a href="#contact" data-t="nav_contact">Contact</a></li>
+            <li class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="de">DE</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+                <button class="lang-btn" data-lang="bg">BG</button>
+            </li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <h1 data-t="hero_title">Crafting Confidence<br>Since 2012</h1>
+        <p class="subtitle" data-t="hero_subtitle">Precision. Tradition. Excellence.</p>
+        <a href="#contact" class="cta-button" data-t="hero_cta">Book a Cut</a>
+    </div>
+    <div class="scroll-indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="about fade-in" id="about">
+    <div class="container">
+        <div class="about-image"></div>
+        <div class="about-content">
+            <h2 data-t="about_title">Our Story</h2>
+            <p class="tagline" data-t="about_tagline">Tradition meets precision</p>
+            <p data-t="about_text1">Since opening our doors in 2012, Steel & Oak Barbers has been more than just a place for a haircut. We've built a sanctuary where craftsmanship meets camaraderie, where every client leaves not just looking sharp, but feeling confident.</p>
+            <p data-t="about_text2">Our master barbers combine time-honored techniques with contemporary styles, ensuring each cut is tailored to your individual character. We believe in the power of attention to detail and the transformative impact of exceptional grooming.</p>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="services fade-in" id="services">
+    <div class="container">
+        <h2 data-t="services_title">Our Services</h2>
+        <p class="services-subtitle" data-t="services_subtitle">Premium grooming for the modern gentleman</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 80 80" fill="none"><path d="M40 10 L50 20 L60 15 L55 25 L65 30 L55 35 L60 45 L50 40 L40 50 L30 40 L20 45 L25 35 L15 30 L25 25 L20 15 L30 20 Z" stroke="#C6A77B" stroke-width="2"/><circle cx="40" cy="30" r="8" stroke="#D4AF37" stroke-width="2"/><line x1="40" y1="10" x2="40" y2="50" stroke="#C6A77B" stroke-width="2"/><line x1="20" y1="30" x2="60" y2="30" stroke="#C6A77B" stroke-width="1.5"/></svg>
+                <h3 data-t="service1_name">Classic Haircut</h3>
+                <p data-t="service1_desc">Traditional cuts with modern precision. Includes consultation, wash, cut, and style.</p>
+                <div class="service-price">€45</div>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 80 80" fill="none"><rect x="25" y="15" width="30" height="50" rx="3" stroke="#C6A77B" stroke-width="2"/><line x1="30" y1="25" x2="50" y2="25" stroke="#D4AF37" stroke-width="2"/><line x1="30" y1="33" x2="50" y2="33" stroke="#D4AF37" stroke-width="2"/><line x1="30" y1="41" x2="50" y2="41" stroke="#D4AF37" stroke-width="2"/><circle cx="40" cy="57" r="4" stroke="#C6A77B" stroke-width="2" fill="#D4AF37" fill-opacity="0.3"/></svg>
+                <h3 data-t="service2_name">Beard Trim</h3>
+                <p data-t="service2_desc">Expert shaping and maintenance for the perfect beard. Hot towel treatment included.</p>
+                <div class="service-price">€30</div>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 80 80" fill="none"><path d="M20 25 L40 15 L60 25 L60 50 L40 60 L20 50 Z" stroke="#C6A77B" stroke-width="2"/><line x1="40" y1="15" x2="40" y2="60" stroke="#D4AF37" stroke-width="2"/><line x1="20" y1="37.5" x2="60" y2="37.5" stroke="#D4AF37" stroke-width="2"/><circle cx="40" cy="37.5" r="6" stroke="#D4AF37" stroke-width="1.5"/></svg>
+                <h3 data-t="service3_name">Hot Towel Shave</h3>
+                <p data-t="service3_desc">The ultimate grooming experience. Straight razor shave with premium products.</p>
+                <div class="service-price">€50</div>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="25" stroke="#C6A77B" stroke-width="2"/><path d="M40 15 L45 32 L62 40 L45 48 L40 65 L35 48 L18 40 L35 32 Z" stroke="#D4AF37" stroke-width="2" fill="#D4AF37" fill-opacity="0.2"/><circle cx="40" cy="40" r="8" stroke="#C6A77B" stroke-width="2"/></svg>
+                <h3 data-t="service4_name">Complete Package</h3>
+                <p data-t="service4_desc">Full service: haircut, beard trim, hot towel shave, and scalp massage.</p>
+                <div class="service-price">€95</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="gallery fade-in" id="gallery">
+    <div class="container">
+        <h2 data-t="gallery_title">Our Work</h2>
+        <p class="gallery-subtitle" data-t="gallery_subtitle">Precision cuts and timeless styles</p>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-title="Classic Fade"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop" alt="Haircut" loading="lazy"></div>
+            <div class="gallery-item" data-title="Beard Sculpting"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop" alt="Beard" loading="lazy"></div>
+            <div class="gallery-item" data-title="Modern Cut"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2070&auto=format&fit=crop" alt="Haircut" loading="lazy"></div>
+            <div class="gallery-item" data-title="Traditional Style"><img src="https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=2070&auto=format&fit=crop" alt="Haircut" loading="lazy"></div>
+            <div class="gallery-item" data-title="Precision Trim"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=2070&auto=format&fit=crop" alt="Haircut" loading="lazy"></div>
+            <div class="gallery-item" data-title="Complete Look"><img src="https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=2070&auto=format&fit=crop" alt="Haircut" loading="lazy"></div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="testimonials fade-in" id="testimonials">
+    <div class="container">
+        <h2 data-t="testimonials_title">What Our Clients Say</h2>
+        <p class="testimonials-subtitle" data-t="testimonials_subtitle">Real experiences from satisfied gentlemen</p>
+        <div class="testimonial-slider">
+            <div class="testimonial active">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" fill="#C6A77B"/></svg>
+                <p class="testimonial-text" data-t="testimonial1_text">"Best barbershop experience I've ever had. The attention to detail is incredible, and the atmosphere is unmatched. I won't go anywhere else."</p>
+                <div class="testimonial-author" data-t="testimonial1_author">— Marcus Thompson</div>
+            </div>
+            <div class="testimonial">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" fill="#C6A77B"/></svg>
+                <p class="testimonial-text" data-t="testimonial2_text">"Professional, skilled, and they really listen to what you want. Every cut is perfect. Steel & Oak sets the standard."</p>
+                <div class="testimonial-author" data-t="testimonial2_author">— David Rodriguez</div>
+            </div>
+            <div class="testimonial">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" fill="#C6A77B"/></svg>
+                <p class="testimonial-text" data-t="testimonial3_text">"More than a haircut, it's an experience. The hot towel shave is absolutely worth it. These guys are true craftsmen."</p>
+                <div class="testimonial-author" data-t="testimonial3_author">— James Mitchell</div>
+            </div>
+        </div>
+        <div class="testimonial-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="contact fade-in" id="contact">
+    <div class="container">
+        <h2 data-t="contact_title">Book Your Appointment</h2>
+        <p class="contact-subtitle" data-t="contact_subtitle">Experience the Steel & Oak difference</p>
+        <div class="contact-wrapper">
+            <form class="contact-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="name" data-t="form_name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-t="form_email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-t="form_phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="service" data-t="form_service">Service</label>
+                    <select id="service" name="service" required>
+                        <option value="" data-t="form_select">Select a service</option>
+                        <option value="haircut" data-t="service1_name">Classic Haircut</option>
+                        <option value="beard" data-t="service2_name">Beard Trim</option>
+                        <option value="shave" data-t="service3_name">Hot Towel Shave</option>
+                        <option value="package" data-t="service4_name">Complete Package</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-t="form_message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit" class="submit-button" data-t="form_submit">Submit Request</button>
+            </form>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <p><strong>Steel & Oak Barbers</strong><br>La Rambla 420<br>Plaza Catalunya<br>Barcelona, 08008</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">STEEL & OAK</div>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.8;" data-t="footer_tagline">Crafting confidence through precision grooming since 2012.</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-t="footer_hours">Working Hours</h3>
+                <ul class="hours-list">
+                    <li><span data-t="day_mon">Monday</span><span>9:00 - 19:00</span></li>
+                    <li><span data-t="day_tue">Tuesday</span><span>9:00 - 19:00</span></li>
+                    <li><span data-t="day_wed">Wednesday</span><span>9:00 - 19:00</span></li>
+                    <li><span data-t="day_thu">Thursday</span><span>9:00 - 20:00</span></li>
+                    <li><span data-t="day_fri">Friday</span><span>9:00 - 20:00</span></li>
+                    <li><span data-t="day_sat">Saturday</span><span>10:00 - 18:00</span></li>
+                    <li><span data-t="day_sun">Sunday</span><span data-t="closed">Closed</span></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-t="footer_social">Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a></li>
+                    <li><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396v8.01Z"/></svg></a></li>
+                    <li><a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Steel & Oak Barbers. All rights reserved. Crafted with precision.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const t={en:{nav_home:'Home',nav_about:'About',nav_services:'Services',nav_gallery:'Gallery',nav_testimonials:'Testimonials',nav_contact:'Contact',hero_title:'Crafting Confidence<br>Since 2012',hero_subtitle:'Precision. Tradition. Excellence.',hero_cta:'Book a Cut',about_title:'Our Story',about_tagline:'Tradition meets precision',about_text1:"Since opening our doors in 2012, Steel & Oak Barbers has been more than just a place for a haircut. We've built a sanctuary where craftsmanship meets camaraderie, where every client leaves not just looking sharp, but feeling confident.",about_text2:"Our master barbers combine time-honored techniques with contemporary styles, ensuring each cut is tailored to your individual character. We believe in the power of attention to detail and the transformative impact of exceptional grooming.",services_title:'Our Services',services_subtitle:'Premium grooming for the modern gentleman',service1_name:'Classic Haircut',service1_desc:'Traditional cuts with modern precision. Includes consultation, wash, cut, and style.',service2_name:'Beard Trim',service2_desc:'Expert shaping and maintenance for the perfect beard. Hot towel treatment included.',service3_name:'Hot Towel Shave',service3_desc:'The ultimate grooming experience. Straight razor shave with premium products.',service4_name:'Complete Package',service4_desc:'Full service: haircut, beard trim, hot towel shave, and scalp massage.',gallery_title:'Our Work',gallery_subtitle:'Precision cuts and timeless styles',testimonials_title:'What Our Clients Say',testimonials_subtitle:'Real experiences from satisfied gentlemen',testimonial1_text:"Best barbershop experience I've ever had. The attention to detail is incredible, and the atmosphere is unmatched. I won't go anywhere else.",testimonial1_author:'— Marcus Thompson',testimonial2_text:"Professional, skilled, and they really listen to what you want. Every cut is perfect. Steel & Oak sets the standard.",testimonial2_author:'— David Rodriguez',testimonial3_text:"More than a haircut, it's an experience. The hot towel shave is absolutely worth it. These guys are true craftsmen.",testimonial3_author:'— James Mitchell',contact_title:'Book Your Appointment',contact_subtitle:'Experience the Steel & Oak difference',form_name:'Name',form_email:'Email',form_phone:'Phone',form_service:'Service',form_select:'Select a service',form_message:'Message',form_submit:'Submit Request',footer_tagline:'Crafting confidence through precision grooming since 2012.',footer_hours:'Working Hours',footer_social:'Follow Us',day_mon:'Monday',day_tue:'Tuesday',day_wed:'Wednesday',day_thu:'Thursday',day_fri:'Friday',day_sat:'Saturday',day_sun:'Sunday',closed:'Closed'},de:{nav_home:'Start',nav_about:'Über uns',nav_services:'Leistungen',nav_gallery:'Galerie',nav_testimonials:'Bewertungen',nav_contact:'Kontakt',hero_title:'Selbstvertrauen schaffen<br>Seit 2012',hero_subtitle:'Präzision. Tradition. Exzellenz.',hero_cta:'Termin buchen',about_title:'Unsere Geschichte',about_tagline:'Tradition trifft Präzision',about_text1:'Seit der Eröffnung im Jahr 2012 ist Steel & Oak Barbers mehr als nur ein Ort für einen Haarschnitt.',about_text2:'Unsere Meisterfriseure kombinieren traditionelle Techniken mit zeitgenössischen Stilen.',services_title:'Unsere Leistungen',services_subtitle:'Premium-Pflege für den modernen Gentleman',service1_name:'Klassischer Haarschnitt',service1_desc:'Traditionelle Schnitte mit moderner Präzision.',service2_name:'Barttrimmen',service2_desc:'Fachkundiges Formen für den perfekten Bart.',service3_name:'Heißtuch-Rasur',service3_desc:'Das ultimative Pflege-Erlebnis.',service4_name:'Komplettpaket',service4_desc:'Full-Service: Haarschnitt, Barttrimmen, Heißtuch-Rasur.',gallery_title:'Unsere Arbeit',gallery_subtitle:'Präzise Schnitte und zeitlose Stile',testimonials_title:'Was unsere Kunden sagen',testimonials_subtitle:'Echte Erfahrungen zufriedener Gentlemen',testimonial1_text:'Das beste Barbershop-Erlebnis.',testimonial1_author:'— Marcus Thompson',testimonial2_text:'Professionell und kompetent.',testimonial2_author:'— David Rodriguez',testimonial3_text:'Mehr als ein Haarschnitt.',testimonial3_author:'— James Mitchell',contact_title:'Termin vereinbaren',contact_subtitle:'Erleben Sie den Steel & Oak Unterschied',form_name:'Name',form_email:'E-Mail',form_phone:'Telefon',form_service:'Dienstleistung',form_select:'Wählen Sie',form_message:'Nachricht',form_submit:'Anfrage senden',footer_tagline:'Seit 2012 schaffen wir Selbstvertrauen.',footer_hours:'Öffnungszeiten',footer_social:'Folgen Sie uns',day_mon:'Montag',day_tue:'Dienstag',day_wed:'Mittwoch',day_thu:'Donnerstag',day_fri:'Freitag',day_sat:'Samstag',day_sun:'Sonntag',closed:'Geschlossen'},es:{nav_home:'Inicio',nav_about:'Nosotros',nav_services:'Servicios',nav_gallery:'Galería',nav_testimonials:'Testimonios',nav_contact:'Contacto',hero_title:'Creando Confianza<br>Desde 2012',hero_subtitle:'Precisión. Tradición. Excelencia.',hero_cta:'Reservar Cita',about_title:'Nuestra Historia',about_tagline:'La tradición se encuentra con la precisión',about_text1:'Desde 2012, Steel & Oak Barbers ha sido más que un lugar.',about_text2:'Nuestros maestros barberos combinan técnicas tradicionales.',services_title:'Nuestros Servicios',services_subtitle:'Cuidado premium para el caballero moderno',service1_name:'Corte Clásico',service1_desc:'Cortes tradicionales con precisión moderna.',service2_name:'Recorte de Barba',service2_desc:'Moldeado experto para la barba perfecta.',service3_name:'Afeitado con Toalla',service3_desc:'La experiencia de cuidado definitiva.',service4_name:'Paquete Completo',service4_desc:'Servicio completo: corte, barba, afeitado.',gallery_title:'Nuestro Trabajo',gallery_subtitle:'Cortes precisos y estilos atemporales',testimonials_title:'Lo Que Dicen Nuestros Clientes',testimonials_subtitle:'Experiencias reales',testimonial1_text:'La mejor experiencia.',testimonial1_author:'— Marcus Thompson',testimonial2_text:'Profesionales y hábiles.',testimonial2_author:'— David Rodriguez',testimonial3_text:'Más que un corte.',testimonial3_author:'— James Mitchell',contact_title:'Reserve Su Cita',contact_subtitle:'Experimente la diferencia',form_name:'Nombre',form_email:'Correo',form_phone:'Teléfono',form_service:'Servicio',form_select:'Seleccione',form_message:'Mensaje',form_submit:'Enviar',footer_tagline:'Creando confianza desde 2012.',footer_hours:'Horario',footer_social:'Síguenos',day_mon:'Lunes',day_tue:'Martes',day_wed:'Miércoles',day_thu:'Jueves',day_fri:'Viernes',day_sat:'Sábado',day_sun:'Domingo',closed:'Cerrado'},bg:{nav_home:'Начало',nav_about:'За нас',nav_services:'Услуги',nav_gallery:'Галерия',nav_testimonials:'Отзиви',nav_contact:'Контакт',hero_title:'Създаваме Увереност<br>От 2012',hero_subtitle:'Прецизност. Традиция. Съвършенство.',hero_cta:'Запази час',about_title:'Нашата История',about_tagline:'Традицията среща прецизността',about_text1:'Откакто отворихме врати през 2012 г.',about_text2:'Нашите майстор-бръснари комбинират техники.',services_title:'Нашите Услуги',services_subtitle:'Премиум грижа',service1_name:'Класическо Подстригване',service1_desc:'Традиционни подстригвания.',service2_name:'Подрязване на Брада',service2_desc:'Експертно оформяне.',service3_name:'Бръснене',service3_desc:'Крайното изживяване.',service4_name:'Пълен Пакет',service4_desc:'Пълен сервиз.',gallery_title:'Нашата Работа',gallery_subtitle:'Прецизни подстригвания',testimonials_title:'Какво Казват Клиентите',testimonials_subtitle:'Истински преживявания',testimonial1_text:'Най-доброто изживяване.',testimonial1_author:'— Маркъс',testimonial2_text:'Професионални.',testimonial2_author:'— Дейвид',testimonial3_text:'Повече от подстригване.',testimonial3_author:'— Джеймс',contact_title:'Запазете Час',contact_subtitle:'Почувствайте разликата',form_name:'Име',form_email:'Имейл',form_phone:'Телефон',form_service:'Услуга',form_select:'Изберете',form_message:'Съобщение',form_submit:'Изпрати',footer_tagline:'Създаваме увереност от 2012.',footer_hours:'Работно време',footer_social:'Последвайте ни',day_mon:'Понеделник',day_tue:'Вторник',day_wed:'Сряда',day_thu:'Четвъртък',day_fri:'Петък',day_sat:'Събота',day_sun:'Неделя',closed:'Затворено'}};
+let l='en';
+function c(a){l=a;document.querySelectorAll('[data-t]').forEach(e=>{const k=e.getAttribute('data-t');if(t[a][k])e.innerHTML=t[a][k];});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector('[data-lang="'+a+'"]').classList.add('active');}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>c(b.getAttribute('data-lang'))));
+const m=document.getElementById('mobileMenu'),n=document.getElementById('navLinks');
+m.addEventListener('click',()=>{n.classList.toggle('active');m.classList.toggle('active');});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('active');m.classList.remove('active');}));
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{if(window.pageYOffset>100)nb.classList.add('scrolled');else nb.classList.remove('scrolled');});
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}));
+const o=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.15,rootMargin:'0px 0px -80px 0px'});
+document.querySelectorAll('.fade-in').forEach(e=>o.observe(e));
+let ct=0;
+const ts=document.querySelectorAll('.testimonial'),d=document.querySelectorAll('.dot');
+function st(i){ts.forEach(t=>t.classList.remove('active'));d.forEach(d=>d.classList.remove('active'));ts[i].classList.add('active');d[i].classList.add('active');}
+setInterval(()=>{ct=(ct+1)%ts.length;st(ct);},6000);
+d.forEach(dot=>dot.addEventListener('click',()=>{ct=parseInt(dot.getAttribute('data-slide'));st(ct);}));
+document.getElementById('bookingForm').addEventListener('submit',(e)=>{e.preventDefault();const s=e.target.querySelector('.submit-button'),o=s.textContent;s.textContent='✓ Request Sent Successfully!';s.style.background='#4CAF50';s.style.borderColor='#4CAF50';setTimeout(()=>{s.textContent=o;s.style.background='';s.style.borderColor='';e.target.reset();},3000);});
+window.addEventListener('scroll',()=>{const s=window.pageYOffset,h=document.querySelector('.hero');if(h&&s<window.innerHeight)h.style.transform='translateY('+(s*0.4)+'px)';});
+if('scrollRestoration'in history)history.scrollRestoration='manual';
+</script>
+</body>
+</html>
